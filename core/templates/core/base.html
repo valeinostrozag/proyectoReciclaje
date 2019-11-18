@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+  
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Page Title</title>
+  {% load static %}
+  {% block css%}
+  {% endblock %}
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="{% static 'core/css/estilo.css'%}" />
+  <!-- Favicons -->
+  <link href="img/favicon.png" rel="icon">
+  <link href="img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,700,700i/Montserrat:300,400,500,700"
+    rel="stylesheet">
+
+  <!-- Bootstrap CSS File -->
+  <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Libraries CSS Files -->
+  <link href="lib/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="lib/animate/animate.min.css" rel="stylesheet">
+  <link href="lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+  <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+  <link href="lib/lightbox/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Main Stylesheet File -->
+  <link href="css/style.css" rel="stylesheet">
+  <!-- Iconos -->
+  <link href="https://unpkg.com/ionicons@4.5.9-1/dist/css/ionicons.min.css" rel="stylesheet" />
+  <!-- https://infinitered.github.io/ionicons-version-3-search/ -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/estilos.css" />
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <!-- JQuery + Jquery validate -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
+
+  <!--Google Fonts-->
+  <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <!--Navegador-->
+  <div class="container">
+    <div id="cont-nav" class="row">
+      <nav id="cont-nav-color" class="navbar navbar-expand-lg fixed-top col-sm-12">
+        <a class="navbar-brand" href="index.html" style="color:black"><img src="img/recycle-sign.png" alt="" class="logo" />
+          <small>ReciclandoFuturo</small>
+        </a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navegadorContenido"
+          aria-controls="navegadorContenido" aria-expanded="false" aria-label="Navegacion">
+          <i class="icon ion-md-menu text-dark"></i>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navegadorContenido">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="#">Inicio</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="{% url 'home'%}">Quienes Somos</a>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="{% url 'servicios'%}">Servicios y Tarifas</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="{% url 'home'%}">Testimonios</a>
+            </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="{% url 'login'%}">Acceso / Registro</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </div>
+  </div>
+    <!--Fin row 1-->
+
+  {% block javascript %}
+  {% endblock %}
+
+  {% block contenido %}
+  {% endblock %}
+
+      
+
+    
+   
+
+
+     
+      <!--contenedor footer-->
+      <!--==========================
+    Footer
+  ============================-->
+      <footer id="footer">
+        <div class="footer-top">
+          <div class="container">
+            <div class="row">
+
+              <div class="col-lg-3 col-md-6 footer-info">
+                <h4>ReciclandoFuturo</h4>
+                <p>Somos especialistas en reciclaje, facilitamos y aseguramos la entrega directa de residuos en empresas
+                  recuperadoras.</p>
+              </div>
+
+              <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Links de interés</h4>
+                <ul>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="#intro">Home</a></li>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="#about">¿Quienes somos?</a></li>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="servicios.html">Servicios</a></li>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="#">Términos de servicio</a></li>
+                  <li><i class="ion-ios-arrow-right"></i> <a href="#">Políticas de Privacidad</a></li>
+                </ul>
+              </div>
+
+              <div class="col-lg-3 col-md-6 footer-contact">
+                <h4>Contáctanos</h4>
+                <p>
+                  Avenida Condell 1589 <br>
+                  Ñuñoa, Santiago<br>
+                  Chile <br>
+                  <strong>Teléfono:</strong> +56 258 5548<br>
+                  <strong>Email:</strong> contacto@reciclandofuturo.cl<br>
+                </p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </footer><!-- #footer -->
+
+      <a href="#" class="back-to-top"><i class="fa fa-chevron-up"></i></a>
+      <!-- Uncomment below i you want to use a preloader -->
+      <!-- <div id="preloader"></div> -->
+
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+
+      <!-- Popper
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    -->
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+      <!-- JavaScript Libraries -->
+      <script src="lib/jquery/jquery.min.js"></script>
+      <script src="lib/jquery/jquery-migrate.min.js"></script>
+      <script src="lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+      <script src="lib/easing/easing.min.js"></script>
+      <script src="lib/superfish/hoverIntent.js"></script>
+      <script src="lib/superfish/superfish.min.js"></script>
+      <script src="lib/wow/wow.min.js"></script>
+      <script src="lib/waypoints/waypoints.min.js"></script>
+      <script src="lib/counterup/counterup.min.js"></script>
+      <script src="lib/owlcarousel/owl.carousel.min.js"></script>
+      <script src="lib/isotope/isotope.pkgd.min.js"></script>
+      <script src="lib/lightbox/js/lightbox.min.js"></script>
+      <script src="lib/touchSwipe/jquery.touchSwipe.min.js"></script>
+      <!-- Contact Form JavaScript File -->
+      <script src="contactform/contactform.js"></script>
+
+
+      <!-- Template Main Javascript File -->
+      <script src="js/main.js"></script>
+</body>
+
+</html>

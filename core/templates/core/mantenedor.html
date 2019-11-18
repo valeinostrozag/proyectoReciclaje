@@ -1,0 +1,38 @@
+{% extends 'core/base.html' %}
+
+{% load static %}
+
+{% block javascript %}
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+    <script src="{% static 'core/js/confirmacion.js' %}"></script>
+
+{% endblock %}
+
+{% block contenido %}
+
+<h3><center>Listado de Servicios</center></h3>
+<table>
+    <tr>
+        <th>Tipo Servicio</th>
+        <th>Valor Servicio</th>
+        <th>Descripción Servicio</th>
+        <th>Opciones</th>
+    </tr>
+
+    {% for s in servicios %}
+    <tr>
+        <td>{{ s.nombreServicio }}</td>
+        <td>{{ s.valorServicio}}</td>
+        <td>{{ s.descripcionServicio}}</td>
+        <td>
+            <a href="{% url 'modificarServicio' s.id %}">Modificar</a>
+           
+        </td>
+       
+    </tr>
+    {% endfor %}
+
+</table>
+
+{% endblock %}
