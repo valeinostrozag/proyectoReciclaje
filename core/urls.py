@@ -1,5 +1,5 @@
 from django.urls import path, include
-from .views import home, servicios, login, registro, mantenedor, agregarServicio, modificarServicio, eliminarServicio
+from .views import home, servicios, login, registro, mantenedor, agregarServicio, modificarServicio, eliminarServicio, registrar_usuario
 
 urlpatterns = [
     path('', home, name="home"),
@@ -11,10 +11,6 @@ urlpatterns = [
     path('modificarServicio/<id>', modificarServicio, name="modificarServicio"),
     path('eliminarServicio/ <id>', eliminarServicio, name="eliminarServicio"),
     path('/accounts/', include('django.contrib.auth.urls')),
-
-
-
-
+    path('registrar-usuario/', registrar_usuario, name="registrar-usuario"),
 ]
-
 

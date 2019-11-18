@@ -1,3 +1,5 @@
+{% load static %}
+
 <!DOCTYPE html>
 <html lang="es">
   
@@ -5,9 +7,8 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Page Title</title>
-  {% load static %}
-  {% block css%}
-  {% endblock %}
+  
+  
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" type="text/css" media="screen" href="{% static 'core/css/estilo.css'%}" />
   <!-- Favicons -->
@@ -34,11 +35,13 @@
   <link href="https://unpkg.com/ionicons@4.5.9-1/dist/css/ionicons.min.css" rel="stylesheet" />
   <!-- https://infinitered.github.io/ionicons-version-3-search/ -->
 
-  <!-- CSS -->
-  <link rel="stylesheet" href="css/estilos.css" />
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/estilos.css" />
   <!-- JQuery + Jquery validate -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.1/dist/jquery.validate.min.js"></script>
@@ -46,6 +49,9 @@
   <!--Google Fonts-->
   <link href="https://fonts.googleapis.com/css?family=Nunito&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Inconsolata&display=swap" rel="stylesheet" />
+
+  {% block css%}
+  {% endblock %}
 </head>
 
 <body>
@@ -53,7 +59,7 @@
   <div class="container">
     <div id="cont-nav" class="row">
       <nav id="cont-nav-color" class="navbar navbar-expand-lg fixed-top col-sm-12">
-        <a class="navbar-brand" href="index.html" style="color:black"><img src="img/recycle-sign.png" alt="" class="logo" />
+        <a class="navbar-brand" href="#" style="color:black"><img src="img/recycle-sign.png" alt="" class="logo" />
           <small>ReciclandoFuturo</small>
         </a>
 
@@ -68,16 +74,29 @@
               <a class="nav-link" href="#">Inicio</a>
             </li>
             <li class="nav-item mx-2">
-              <a class="nav-link" href="{% url 'home'%}">Quienes Somos</a>
+              <a class="nav-link" href="#about">Quienes Somos</a>
             <li class="nav-item mx-2">
               <a class="nav-link" href="{% url 'servicios'%}">Servicios y Tarifas</a>
             </li>
             <li class="nav-item mx-2">
               <a class="nav-link" href="{% url 'home'%}">Testimonios</a>
             </li>
+            
+            {% if user.is_authenticated %}
+                <li class="nav-item">
+                    <a class="nav-link" href="#">User: {{ user.username }}</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'logout' %}">Cerrar Sesion</a>
+                </li>
+            {% else %}
             <li class="nav-item mx-2">
-              <a class="nav-link" href="{% url 'login'%}">Acceso / Registro</a>
+              <a class="nav-link" href="{% url 'login'%}">Acceso</a>
             </li>
+            <li class="nav-item mx-2">
+              <a class="nav-link" href="{% url 'registrar-usuario'%}">Registrarse</a>
+            </li>
+            {% endif %}
           </ul>
         </div>
       </nav>

@@ -1,8 +1,33 @@
 from django import forms
 from django.forms import ModelForm
-from .models import TipoServicio
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+from .models import Servicio, Perfil
 
-class TipoServicioForm(ModelForm):
+class ServicioForm(ModelForm):
+
+    nombre_servicio = forms.CharField(min_length=4, max_length=100)
+    valor_servicio  = forms.IntegerField(min_value=1)
+    nombre_servicio = forms.CharField(min_length=4, max_length=250)
+
     class Meta:
-        model= TipoServicio
-        fields= ['nombreServicio', 'valorServicio', 'descripcionServicio']
+        model= Servicio
+        #fecha_servicio podria irse
+        fields= ['nombre_servicio', 'valor_servicio', 'descripcion_servicio', 'fecha_servicio', 'cliente']
+        exclude = ('cliente',)
+
+class PerfilForm(ModelForm):
+    class Meta:
+        model = Perfil
+        fields = ['direccion','comuna', 'ciudad', 'tipo_domicilio']
+        labels={
+            'tipo_domicilio':'Tipo de domicilio'
+        }
+        
+class CustomUserForm(UserCreationForm):
+    class Meta:
+        model = User
+        fields = ['first_name', 'last_name','email', 'username', 'password1','password2']
+        labels={
+            'email':'Email'
+        }

@@ -1,31 +1,33 @@
 from django.db import models
+from django.contrib.auth.models import User
 from datetime import datetime
 
 # Create your models here.
 
-class Cliente(models.Model):
-    nombres= models.CharField(max_length=80)
-    apellidos= models.CharField(max_length=80)
-    correo= models.CharField(max_length=200)
-    direccion=models.CharField(max_length=200)
-    comuna= models.CharField(max_length=80)
-    cuidad= models.CharField(max_length=80)
-    tipoDomicilio= models.CharField (max_length=80)
-    contraseña= models.CharField(max_length=80)
+TIPO_DOMICILIO = (
+('Fundacion', 'Fundacion'),
+('Empresa', 'Empresa'),
+('Casa particular', 'Casa particular'),
+('Centro educacional', 'Centro educacional')
+)
 
+class Perfil(models.Model):
+    user           = models.OneToOneField(User, on_delete=models.CASCADE)
+    direccion      = models.CharField(max_length=200)
+    comuna         = models.CharField(max_length=200)
+    ciudad         = models.CharField(max_length=200)
+    tipo_domicilio = models.CharField(max_length=100, choices=TIPO_DOMICILIO)
+    
     def __str__(self):
-        return self.nombres
+        return self.user.username
 
-class TipoServicio(models.Model):
-    nombreServicio= models.CharField(max_length=80)
-    valorServicio= models.IntegerField()
-    descripcionServicio= models.CharField(max_length=200)
-
-    def __str__(self):
-        return self.nombreServicio
 
 class Servicio(models.Model):
-    fechaServicio= models.DateTimeField()
-    cliente= models.ForeignKey(Cliente, on_delete= models.CASCADE)
-    tipoServicio= models.ForeignKey(TipoServicio, on_delete= models.CASCADE)
+    nombre_servicio         = models.CharField(max_length=80)
+    valor_servicio          = models.IntegerField()
+    descripcion_servicio    = models.CharField(max_length=200)
+    fecha_servicio          = models.DateTimeField()
+    cliente                 = models.ManyToManyField(User)
 
+    def __str__(self):
+        return self.nombre_servicio

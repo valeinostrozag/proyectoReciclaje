@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect 
-from .models import TipoServicio
-from .forms import TipoServicioForm
+from .models import Servicio, Perfil
+from .forms import ServicioForm, CustomUserForm, PerfilForm
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth import login as auth_login, authenticate
 
 # Create your views here.
 def home (request):
@@ -17,7 +19,7 @@ def registro(request):
     return render(request, 'core/registro.html')
 
 def mantenedor(request):
-    servicios= TipoServicio.objects.all()
+    servicios= Servicio.objects.all()
     data = {
         'servicios': servicios
     }
@@ -25,11 +27,11 @@ def mantenedor(request):
 
 def agregarServicio(request):
     data = {
-        'form': TipoServicioForm()
+        'form': ServicioForm()
     }
 
     if request.method == "POST":
-        formulario = TipoServicioForm(request.POST)
+        formulario = ServicioForm(request.POST)
         if formulario.is_valid():
             formulario.save()
             data['mensaje']="Guardado Correctamente"
@@ -37,12 +39,12 @@ def agregarServicio(request):
     return render(request, 'core/agregarServicio.html', data)
 
 def modificarServicio(request, id):
-    tipoServicio = TipoServicio.objects.get(id=id)
+    servicio = Servicio.objects.get(id=id)
     data = {
-        'form': TipoServicioForm(instance=tipoServicio)
+        'form': ServicioForm(instance=servicio)
     }
     if request.method == "POST":
-        formulario = TipoServicioForm(data=request.POST, instance=tipoServicio)
+        formulario = ServicioForm(data=request.POST, instance=servicio)
         if formulario.is_valid():
             formulario.save()
             data['mensaje'] = "Modificado Correctamente"
@@ -51,7 +53,40 @@ def modificarServicio(request, id):
     return render(request, 'core/modificarServicio.html', data)
 
 def eliminarServicio(request, id):
-    tipoServicio = TipoServicio.objects.get(id=id)
-    tipoServicio.delete()
+    servicio = Servicio.objects.get(id=id)
+    servicio.delete()
 
     return redirect(to="mantenedor")
+
+def registrar_usuario(request):
+
+    data = {
+        'form': CustomUserForm(),
+        'perfil': PerfilForm()
+    }
+
+    if request.method=='POST':
+
+        formulario = CustomUserForm(request.POST)
+        perfil_form = PerfilForm(request.POST)
+
+        if formulario.is_valid() and perfil_form.is_valid():
+
+            usuario_nuevo = formulario.save()
+            perfil = perfil_form.save(commit=False)
+            perfil.user = usuario_nuevo
+            perfil.save()
+            
+            username=formulario.cleaned_data['username']
+            password=formulario.cleaned_data['password1']
+            #autentificamos credenciales del usuario
+            user = authenticate(username=username, password=password)
+            #logueamos el usuario
+            auth_login(request, user)
+
+            return redirect(to='home')
+            
+        data['form']=formulario
+        data['perfil']=perfil_form
+
+    return render(request, 'registration/registrar.html', data)

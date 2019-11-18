@@ -2,6 +2,10 @@
 # General
 --------------------------------------------------------------*/
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
     background: #fff;
     color: #666666;
