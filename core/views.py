@@ -98,10 +98,11 @@ def registrar_usuario(request):
 @login_required
 def contratar_servicio(request, id):
     user = request.user
+    perfil = Perfil.objects.get(user_id=user.id)
     servicio = Servicio.objects.get(id=id)
 
-    servicio.cliente = user
-    servicio.save()
+    perfil.servicio = servicio
+    perfil.save()
 
     return redirect(to='perfil')
 
@@ -110,9 +111,7 @@ def perfil(request):
 
     user = request.user
     perfil = Perfil.objects.get(user_id = user.id)
-    #servicio = Servicio.objects.get(cliente_id=user.id)
     data={      
         'perfil': perfil
-        #'servicio': servicio
     }
     return render(request, 'core/perfil.html', data)

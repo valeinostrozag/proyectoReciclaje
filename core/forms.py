@@ -12,9 +12,8 @@ class ServicioForm(ModelForm):
 
     class Meta:
         model= Servicio
-        #fecha_servicio podria irse
-        fields= ['nombre_servicio', 'valor_servicio', 'descripcion_servicio', 'fecha_servicio', 'cliente']
-        exclude = ('cliente',)
+        fields= ['nombre_servicio', 'valor_servicio', 'descripcion_servicio', 'fecha_servicio']
+        #exclude = ('cliente',)
         labels={
             'fecha_servicio':'Fecha de servicio'
         }
@@ -22,7 +21,8 @@ class ServicioForm(ModelForm):
 class PerfilForm(ModelForm):
     class Meta:
         model = Perfil
-        fields = ['direccion','comuna', 'ciudad', 'tipo_domicilio']
+        fields = ['direccion','comuna', 'ciudad', 'tipo_domicilio', 'servicio']
+        exclude = ('servicio',)
         labels={
             'tipo_domicilio':'Tipo de domicilio'
         }
