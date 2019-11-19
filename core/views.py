@@ -103,7 +103,7 @@ def contratar_servicio(request, id):
     servicio.cliente = user
     servicio.save()
 
-    redirect(to='perfil')
+    return redirect(to='perfil')
 
 @login_required
 def perfil(request):
