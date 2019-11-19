@@ -18,6 +18,7 @@ def login(request):
 def registro(request):
     return render(request, 'core/registro.html')
 
+@login_required
 def mantenedor(request):
     servicios= Servicio.objects.all()
     data = {
@@ -25,7 +26,8 @@ def mantenedor(request):
     }
     return render(request, 'core/mantenedor.html', data)
 
-def agregarServicio(request):
+@login_required
+def agregar_servicio(request):
     data = {
         'form': ServicioForm()
     }
@@ -38,7 +40,8 @@ def agregarServicio(request):
    
     return render(request, 'core/agregarServicio.html', data)
 
-def modificarServicio(request, id):
+@login_required
+def modificar_servicio(request, id):
     servicio = Servicio.objects.get(id=id)
     data = {
         'form': ServicioForm(instance=servicio)
@@ -52,7 +55,8 @@ def modificarServicio(request, id):
     
     return render(request, 'core/modificarServicio.html', data)
 
-def eliminarServicio(request, id):
+@login_required
+def eliminar_servicio(request, id):
     servicio = Servicio.objects.get(id=id)
     servicio.delete()
 
@@ -90,3 +94,25 @@ def registrar_usuario(request):
         data['perfil']=perfil_form
 
     return render(request, 'registration/registrar.html', data)
+
+@login_required
+def contratar_servicio(request, id):
+    user = request.user
+    servicio = Servicio.objects.get(id=id)
+
+    servicio.cliente = user
+    servicio.save()
+
+    redirect(to='perfil')
+
+@login_required
+def perfil(request):
+
+    user = request.user
+    perfil = Perfil.objects.get(user_id = user.id)
+    #servicio = Servicio.objects.get(cliente_id=user.id)
+    data={      
+        'perfil': perfil
+        #'servicio': servicio
+    }
+    return render(request, 'core/perfil.html', data)

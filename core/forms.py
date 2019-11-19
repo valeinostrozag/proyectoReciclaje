@@ -15,6 +15,9 @@ class ServicioForm(ModelForm):
         #fecha_servicio podria irse
         fields= ['nombre_servicio', 'valor_servicio', 'descripcion_servicio', 'fecha_servicio', 'cliente']
         exclude = ('cliente',)
+        labels={
+            'fecha_servicio':'Fecha de servicio'
+        }
 
 class PerfilForm(ModelForm):
     class Meta:

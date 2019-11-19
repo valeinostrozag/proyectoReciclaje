@@ -11,28 +11,40 @@
 
 {% block contenido %}
 
-<h3><center>Listado de Servicios</center></h3>
-<table>
-    <tr>
-        <th>Tipo Servicio</th>
-        <th>Valor Servicio</th>
-        <th>Descripción Servicio</th>
-        <th>Opciones</th>
-    </tr>
+<div class="pb-5 pt-3 container" style="margin-bottom: 100vh;">
+    <h3>Listado de Servicios</h3>
+    <table class="table table-hover">
+        <tr>
+            <th>Tipo Servicio</th>
+            <th>Valor Servicio</th>
+            <th>Descripción Servicio</th>
+            <th>Fecha Servicio</th>
+            <th>Opciones</th>
+        </tr>
 
-    {% for s in servicios %}
-    <tr>
-        <td>{{ s.nombreServicio }}</td>
-        <td>{{ s.valorServicio}}</td>
-        <td>{{ s.descripcionServicio}}</td>
-        <td>
-            <a href="{% url 'modificarServicio' s.id %}">Modificar</a>
-           
-        </td>
-       
-    </tr>
-    {% endfor %}
+        {% for s in servicios %}
+        <tr>
+            <td>{{ s.nombre_servicio }}</td>
+            <td>{{ s.valor_servicio}}</td>
+            <td>{{ s.descripcion_servicio}}</td>
+            <td>{{ s.fecha_servicio}}</td>
 
-</table>
+            {% if request.user.groups.all.0.name == 'Administrador' %}
+                <td>
+                    <a class="btn btn-warning" href="{% url 'modificar-servicio' s.id %}">Modificar</a>
+                
+                </td>
+                <td><a class="btn btn-danger" href="#" onclick="confirmarEliminacion({{s.id}});">Eliminar</a></td>
+            {% else %}
+                <td>
+                    <a class="btn btn-primary" href="{% url 'contratar-servicio' s.id %}">Contratar</a>
+                </td>
+            {% endif %}
+        </tr>
+        {% endfor %}
+
+    </table>
+</div>  
+
 
 {% endblock %}

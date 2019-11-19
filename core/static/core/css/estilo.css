@@ -117,9 +117,9 @@ body {
     }
   }
 
-body{
+/*body{
     font-family: 'Inconsolata', monospace;
-}
+}*/
 section{
     font-family: 'Inconsolata', monospace;
 }
@@ -143,11 +143,11 @@ footer{
     justify-content: center;
 }
 
-#testimonioTitulo{
+/*#testimonioTitulo{
     display: flex;
     justify-content: center;
     margin-top: 43px;
-}
+}*/
 #navegadorContenido ul li a{
     text-decoration: none;
     color: white;
@@ -168,14 +168,14 @@ footer{
 #conenedorPrincipalTestimonio{
     margin-top: 30px;
 }
-#grafico1{
+/*#grafico1{
     display: flex;
     width: 400px;
     height: 450px;
     justify-content: center;
 
 
-}
+}*/
 /*--------------------------------------------------------------
 # Intro Section
 --------------------------------------------------------------*/
@@ -484,12 +484,9 @@ footer{
 --------------------------------*/
 
 #testimonials {
-    padding: 60px 0;
+    padding: 60px 0px;
   }
   
-  #testimonials .section-header {
-    margin-bottom: 40px;
-  }
   
   #testimonials .testimonial-item {
     text-align: center;
@@ -970,8 +967,8 @@ footer{
 .container .info span .fa {
   color: #EF3B3A;
 }
-body {
-  background: #76b852; /* fallback for old browsers */
+/*body {
+  background: #76b852; 
   background: -webkit-linear-gradient(right, #76b852, #8DC26F);
   background: -moz-linear-gradient(right, #76b852, #8DC26F);
   background: -o-linear-gradient(right, #76b852, #8DC26F);
@@ -979,17 +976,17 @@ body {
   font-family: "Roboto", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;      
-}
+}*/
 
 :root {
   --input-padding-x: 1.5rem;
   --input-padding-y: .75rem;
 }
 
-body {
+/*body {
   background: #007bff;
   background: linear-gradient(to right, #0062E6, #33AEFF);
-}
+}*/
 
 .card-signin {
   border: 0;
@@ -1117,9 +1114,6 @@ body {
   }
 }
 
-body {
-  padding-top: 90px;
-}
 .panel-login {
 border-color: #ccc;
 -webkit-box-shadow: 0px 2px 3px 0px rgba(0,0,0,0.2);

@@ -79,31 +79,31 @@
 
     <!--Sección info -->
     <section>
-      <div class="row" id="testimonioTitulo">
-        <h2 class="font-weight-bold text-uppercase">
+      <div class="container shadow-lg" id="testimonioTitulo">
+        <h2 class="font-weight-bold text-uppercase text-center pt-5 pb-3">
           Chile es el país que más genera basura América
         </h2>
 
-        <p class="text-justify"><center>
+        <p class="text-justify">
           El informe del Banco Mundial sobre cuánta basura genera cada país
           en el mundo determinó que Chile es el mayor de Sudamérica con 1,5
           Kg., por persona al día, seguido por Argentina (1,13 Kg.) y Brasil
-          (1,04 Kg.), ambos países con mayor población que Chile.</center>
+          (1,04 Kg.), ambos países con mayor población que Chile.
         </p> 
-        <div class="text-justify" id="grafico1">
+        <div class="text-center" id="grafico1">
           <img class="img-fluid" src="{% static 'core/img/graficoBasuraPersona.png' %}"
             alt="Kilos de basura generada por persona en cada país" />
         </div>
-        <p><center>
+        <p>
           <br>
           Greenpeace Chile alertó del aumento del nivel de basura generado por cada persona en Chile, que ronda los
-          456 kilogramos, y que sitúa a este país como el que más residuos per cápita genera en la región.</center>
-        </center></p> 
-        <p><center>
+          456 kilogramos, y que sitúa a este país como el que más residuos per cápita genera en la región.
+        </p> 
+        <p>
             “Hay una falta de políticas públicas de reciclaje y también un aumento del nivel adquisitivo de las personas
             que se suma a la falta de conciencia sobre la cantidad de basura que generamos”, dijo en declaraciones a Efe
             el director de Greenpeace Chile, Matías Asún.
-        </center></p>
+        </p>
     <br />
       </div>
     </section>
@@ -113,10 +113,10 @@
     Sección ¿Quienes somos?
   ============================-->
     <section id="about">
-      <div class="container">
+      <div class="container shadow-lg">
 
         <header class="section-header">
-          <h3><center>¿Quienes somos?</center></h3>
+          <h3 class="pt-4"><center>¿Quienes somos?</center></h3>
           <p>En 2017, un grupo de amigos y profesionales nos unimos con el fin de aportar en la tarea de reciclar,
             facilitando a las personas cumplir con esta importante misión </p>
         </header>
@@ -177,7 +177,7 @@
       <div class="container text-center">
         <h3>¿Necesitas más información sobre nuestros servicios?</h3>
         <p> Llena nuestro formulario de registro y cuéntanos tus dudas, te responderemos a la brevedad!.</p>
-        <a class="cta-btn" href="contacto.html">LLévame allá!</a>
+        <a class="cta-btn" href="{% url 'registrar-usuario' %}">LLévame allá!</a>
       </div>
     </section><!-- #call-to-action -->
 
@@ -187,11 +187,9 @@
     Clients Section
   ============================-->
     <section id="testimonials" class="section-bg wow fadeInUp">
-      <div class="container">
+      <div class="container shadow-lg">
 
-        <header class="section-header">
-          <h3><center>Testimonios</center></h3>
-        </header>
+          <h3 class="py-5 text-center">Testimonios</h3>
 
         <div class="owl-carousel testimonials-carousel">
 
@@ -231,7 +229,7 @@
             </p>
           </div>
 
-          <div class="testimonial-item">
+          <div class="testimonial-item pb-5">
             <img src="{% static 'core/img/1d6a0e33ac8dc7d63322628351574e0b.jpg' %}" class="testimonial-img" alt="">
             <h3>María José Fuentes</h3>
             <h4>Profesora - La Reina</h4>

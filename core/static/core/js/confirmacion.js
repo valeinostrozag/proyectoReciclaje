@@ -10,7 +10,7 @@ function confirmarEliminacion(id){
         cancelButtonText: 'Cancelar'
       }).then((result) => {
         if (result.value) {
-            window.location.href = "eliminarServicio/"+id+"/";
+            window.location.href = "/eliminar-servicio/"+id+"/";
             
         }
       })
