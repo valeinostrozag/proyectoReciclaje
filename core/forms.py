@@ -12,7 +12,7 @@ class ServicioForm(ModelForm):
 
     class Meta:
         model= Servicio
-        fields= ['nombre_servicio', 'valor_servicio', 'descripcion_servicio', 'fecha_servicio']
+        fields= ['nombre_servicio', 'tipo_servicio','valor_servicio', 'descripcion_servicio', 'fecha_servicio']
         #exclude = ('cliente',)
         labels={
             'fecha_servicio':'Fecha de servicio'

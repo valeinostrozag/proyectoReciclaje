@@ -21,6 +21,16 @@ def registro(request):
 @login_required
 def mantenedor(request):
     servicios= Servicio.objects.all()
+    tipo_servicio= request.GET.get('tipo-domicilio')
+    nombre_servicio= request.GET.get('nombre-servicio')
+
+    if 'btn-domicilio' in request.GET:
+       if tipo_servicio: 
+           servicios= Servicio.objects.filter(tipo_servicio__icontains=tipo_servicio)
+    elif 'btn-nombre' in request.GET:
+        if nombre_servicio:
+            servicios= Servicio.objects.filter(nombre_servicio__icontains=nombre_servicio)
+      
     data = {
         'servicios': servicios
     }
@@ -28,6 +38,7 @@ def mantenedor(request):
 
 @login_required
 def agregar_servicio(request):
+
     data = {
         'form': ServicioForm()
     }
@@ -115,3 +126,12 @@ def perfil(request):
         'perfil': perfil
     }
     return render(request, 'core/perfil.html', data)
+
+@login_required
+def cancelar_servicio(request):
+    user = request.user
+    perfil = Perfil.objects.get(user_id = user.id)
+    perfil.servicio=None
+    perfil.save()
+
+    return redirect('perfil')

@@ -13,8 +13,33 @@
 
 <div class="pb-5 pt-3 container" style="margin-bottom: 100vh;">
     <h3>Listado de Servicios</h3>
+
+
+    <form class="form-inline mb-5" method="GET">
+        <div class="form-group mx-3">
+            <label class="mr-2">Buscar por tipo de servicio:</label>
+            <!--<input type="text" class="form-control mr-2" name="tipo-domicilio">-->
+            <select class="form-control mr-2" name="tipo-domicilio">
+                <option value="fundacion">Fundación</option>
+                <option value="empresa">Empresa</option>
+                <option value="casa-particular">Casa Particular</option>
+                <option value="centro-educacional">Centro Educacional</option>
+            </select>        
+            <button class="btn btn-secondary" type="submit" name="btn-domicilio">Buscar</button>            
+        </div>
+
+        <div class="form-group mx-3">
+            <label class="mr-2">Buscar por nombre de servicio:</label>
+            <input type="text" class="form-control mr-2" name="nombre-servicio">            
+            <button class="btn btn-secondary" type="submit" name="btn-nombre">Buscar</button>            
+        </div>        
+
+    </form>
+
+
     <table class="table table-hover">
         <tr>
+            <th>Nombre Servicio</th>
             <th>Tipo Servicio</th>
             <th>Valor Servicio</th>
             <th>Descripción Servicio</th>
@@ -25,6 +50,7 @@
         {% for s in servicios %}
         <tr>
             <td>{{ s.nombre_servicio }}</td>
+            <td>{{ s.tipo_servicio}}</td>
             <td>{{ s.valor_servicio}}</td>
             <td>{{ s.descripcion_servicio}}</td>
             <td>{{ s.fecha_servicio}}</td>
@@ -36,14 +62,21 @@
                 </td>
                 <td><a class="btn btn-danger" href="#" onclick="confirmarEliminacion({{s.id}});">Eliminar</a></td>
             {% else %}
-                <td>
-                    <a class="btn btn-primary" href="{% url 'contratar-servicio' s.id %}">Contratar</a>
-                </td>
+                {% if request.user.perfil.servicio.id == s.id %}
+                    <td>
+                        <a class="btn btn-danger" href="{% url 'cancelar-servicio' %}">Cancelar</a>
+                    </td>
+                {% else %}
+                    <td>
+                        <a class="btn btn-primary" href="{% url 'contratar-servicio' s.id %}">Contratar</a>
+                    </td>
+                {% endif %}  
             {% endif %}
         </tr>
         {% endfor %}
 
     </table>
+    <a class="btn btn-success" href="{% url 'agregar-servicio' %}">Agregar Servicio</a>
 </div>  
 
 

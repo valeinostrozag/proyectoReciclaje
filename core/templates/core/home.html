@@ -18,7 +18,11 @@
               <div class="carousel-content">
                 <h2>Recicla sin moverte de tu hogar</h2>
                 <p>Somos una empresa que ofrece el servicio de retiro de residuos reciclables a tu domicilio</p>
-                <a href="contacto.html" class="btn-get-started scrollto">Empecemos!</a>
+                {% if user.is_authenticated %}
+                  <a href="#" class="btn-get-started scrollto">Empecemos!</a>
+                {% else %}
+                  <a href="{% url 'registrar-usuario'%}" class="btn-get-started scrollto">Empecemos!</a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -30,7 +34,11 @@
                 <h2>Ya no tienes excusas para no reciclar!</h2>
                 <p>Gracias a nuestro servicio no tendrás que moverte de tu hogar para asegurarte que los residuos
                   lleguen a un lugar en donde sean efectivamente reciclados</p>
-                <a href="contacto.html" class="btn-get-started scrollto">Empecemos!</a>
+                 {% if user.is_authenticated %}
+                  <a href="#" class="btn-get-started scrollto">Empecemos!</a>
+                {% else %}
+                  <a href="{% url 'registrar-usuario'%}" class="btn-get-started scrollto">Empecemos!</a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -42,7 +50,11 @@
                 <h2>Programa tu retiro</h2>
                 <p> Ejecutamos el retiro de los residuos reciclables en tu domicilio según frecuencias programadas
                   cada 7, 14 o 28 días.</p>
-                <a href="contacto.html" class="btn-get-started scrollto">Empecemos!</a>
+                 {% if user.is_authenticated %}
+                  <a href="#" class="btn-get-started scrollto">Empecemos!</a>
+                {% else %}
+                  <a href="{% url 'registrar-usuario'%}" class="btn-get-started scrollto">Empecemos!</a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -53,7 +65,11 @@
               <div class="carousel-content">
                 <h2>¡Registrate ahora!</h2>
                 <p>Llena nuestro formulario de inicio y nos comunicaremos contigo a la brevedad.</p>
-                <a href="contacto.html" class="btn-get-started scrollto">Empecemos!</a>
+                 {% if user.is_authenticated %}
+                  <a href="#" class="btn-get-started scrollto">Empecemos!</a>
+                {% else %}
+                  <a href="{% url 'registrar-usuario'%}" class="btn-get-started scrollto">Empecemos!</a>
+                {% endif %}
               </div>
             </div>
           </div>
@@ -177,7 +193,12 @@
       <div class="container text-center">
         <h3>¿Necesitas más información sobre nuestros servicios?</h3>
         <p> Llena nuestro formulario de registro y cuéntanos tus dudas, te responderemos a la brevedad!.</p>
-        <a class="cta-btn" href="{% url 'registrar-usuario' %}">LLévame allá!</a>
+      
+        {% if user.is_authenticated %}
+          <a class="cta-btn" href="#">LLévame allá!</a>
+        {% else %}
+          <a class="cta-btn" href="{% url 'registrar-usuario' %}">LLévame allá!</a>
+        {% endif %}
       </div>
     </section><!-- #call-to-action -->
 

@@ -17,11 +17,19 @@ TIPO_RETIRO = (
 ('Fin de mes', 'Fin de mes'),
 )
 
+TIPO_SERVICIO=(
+('Fundacion', 'Fundacion'),
+('Empresa', 'Empresa'),
+('Casa particular', 'Casa particular'),
+('Centro educacional', 'Centro educacional')
+)
+
 class Servicio(models.Model):
     nombre_servicio         = models.CharField(max_length=80)
     valor_servicio          = models.IntegerField()
     descripcion_servicio    = models.TextField(max_length=200)
     fecha_servicio          = models.CharField(max_length=100, choices=TIPO_RETIRO)
+    tipo_servicio           = models.CharField(max_length=100, choices=TIPO_SERVICIO)
     #cliente                 = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):

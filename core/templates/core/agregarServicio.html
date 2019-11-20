@@ -6,9 +6,8 @@
 
 <div class="pb-5 pt-3 container" style="margin-bottom: 100vh;">
 
-    <h5 class="mb-4">Agregar Servicio</h5>
-
-    <form method="POST">
+    <h5 class="mb-4">Agregar Servicio</h5> 
+    <form action="" class="container py-3" method="POST">
         {% csrf_token %}
         <table>
                 {{ form.as_table }}  
