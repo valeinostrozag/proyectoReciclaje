@@ -1,5 +1,9 @@
 from django.urls import path, include
-from .views import home, servicios, login, registro, mantenedor, agregar_servicio, modificar_servicio, eliminar_servicio, registrar_usuario, contratar_servicio, perfil, cancelar_servicio
+from .views import home, servicios, login, registro, mantenedor, agregar_servicio, modificar_servicio, eliminar_servicio, registrar_usuario, contratar_servicio, perfil, cancelar_servicio, ServicioViewSet
+from rest_framework import routers 
+
+router = routers.DefaultRouter()
+router.register('servicio', ServicioViewSet)
 
 urlpatterns = [
     path('', home, name="home"),
@@ -15,5 +19,7 @@ urlpatterns = [
     path('contratar-servicio/<id>/', contratar_servicio, name="contratar-servicio"),
     path('perfil/', perfil, name="perfil"),
     path('cancelar-servicio/', cancelar_servicio, name="cancelar-servicio"),
+    path('api/', include(router.urls)),
+    
 ]
 

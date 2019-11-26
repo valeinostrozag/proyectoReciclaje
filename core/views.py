@@ -4,6 +4,10 @@ from .forms import ServicioForm, CustomUserForm, PerfilForm
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import login as auth_login, authenticate
 
+#rest_framework
+from rest_framework import viewsets
+from.serializers import ServicioSerializer
+
 # Create your views here.
 def home (request):
 
@@ -135,3 +139,10 @@ def cancelar_servicio(request):
     perfil.save()
 
     return redirect('perfil')
+
+class ServicioViewSet(viewsets.ModelViewSet):
+    queryset = Servicio.objects.all()
+    serializer_class = ServicioSerializer
+   
+
+
